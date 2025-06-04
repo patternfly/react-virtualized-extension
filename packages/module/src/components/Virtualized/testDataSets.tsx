@@ -2,7 +2,7 @@
 
 // This file is test data pulled from the @patternfly/react-table package
 
-import * as React from 'react';
+import type { MouseEvent } from 'react';
 import { IRow, ICell, IActions, EditableTextCell } from '@patternfly/react-table';
 
 export const columns: (ICell | string)[] = [
@@ -198,13 +198,13 @@ export const editableRows: IRow[] = [
 export const actions: IActions = [
   {
     title: 'Some action',
-    onClick: (event: React.MouseEvent, rowId: number) =>
+    onClick: (event: MouseEvent, rowId: number) =>
       // tslint:disable-next-line:no-console
       console.log('clicked on Some action, on row: ', rowId)
   },
   {
     title: <div>Another action</div>,
-    onClick: (event: React.MouseEvent, rowId: number) =>
+    onClick: (event: MouseEvent, rowId: number) =>
       // tslint:disable-next-line:no-console
       console.log('clicked on Another action, on row: ', rowId)
   },
@@ -214,7 +214,7 @@ export const actions: IActions = [
   },
   {
     title: 'Third action',
-    onClick: (event: React.MouseEvent, rowId: number) =>
+    onClick: (event: MouseEvent, rowId: number) =>
       // tslint:disable-next-line:no-console
       console.log('clicked on Third action, on row: ', rowId)
   }

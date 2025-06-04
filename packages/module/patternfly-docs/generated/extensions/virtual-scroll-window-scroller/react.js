@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement, Fragment } from 'react';
 import { AutoLinkHeader, Example, Link as PatternflyThemeLink } from '@patternfly/documentation-framework/components';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody, WindowScroller } from '@patternfly/react-virtualized-extension';
@@ -185,7 +185,7 @@ pageData.examples = {
 };
 
 const Component = () => (
-  <React.Fragment>
+  <Fragment>
     <p {...{"className":"pf-v6-c-content--p pf-m-editorial ws-p "}}>
       {`Note: React Virtualized Extension lives in its own package at `}
       <PatternflyThemeLink {...{"to":"https://www.npmjs.com/package/@patternfly/react-virtualized-extension","className":""}}>
@@ -207,8 +207,8 @@ This package is currently an extension. Extension components do not undergo the 
     <AutoLinkHeader {...{"id":"examples","headingLevel":"h2","className":"ws-title ws-h2"}}>
       {`Examples`}
     </AutoLinkHeader>
-    {React.createElement(pageData.examples["Window scroller"])}
-  </React.Fragment>
+    {createElement(pageData.examples["Window scroller"])}
+  </Fragment>
 );
 Component.displayName = 'ExtensionsVirtualScrollWindowScrollerReactDocs';
 Component.pageData = pageData;

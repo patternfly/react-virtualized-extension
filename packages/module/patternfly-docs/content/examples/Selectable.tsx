@@ -1,10 +1,11 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
+import { useState } from 'react';
 
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody } from '@patternfly/react-virtualized-extension';
 import { Table, Thead, Tr, Th, Td, Caption, TableGridBreakpoint } from '@patternfly/react-table';
 
-export const SelectableTableVirtualized: React.FunctionComponent = () => {
+export const SelectableTableVirtualized: FunctionComponent = () => {
   // this StringArray type is just needed because something in our documentation framework crashes when it encounters
   // a string[][] type
   type StringArray = string[];
@@ -16,7 +17,7 @@ export const SelectableTableVirtualized: React.FunctionComponent = () => {
 
   const selectableRepos = rows;
 
-  const [selectedRepoNames, setSelectedRepoNames] = React.useState<string[]>([]);
+  const [selectedRepoNames, setSelectedRepoNames] = useState<string[]>([]);
 
   const setRepoSelected = (repo: string, isSelecting = true) =>
     setSelectedRepoNames((prevSelected) => {
@@ -31,7 +32,7 @@ export const SelectableTableVirtualized: React.FunctionComponent = () => {
   const areAllReposSelected = selectedRepoNames.length === selectableRepos.length;
   const isRepoSelected = (repo: string) => selectedRepoNames.includes(repo);
 
-  const [recentSelectedRowIndex, setRecentSelectedRowIndex] = React.useState<number | null>(null);
+  const [recentSelectedRowIndex, setRecentSelectedRowIndex] = useState<number | null>(null);
 
   const onSelectRepo = (repo: string, rowIndex: number, isSelecting: boolean) => {
     if (recentSelectedRowIndex !== null) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement, Fragment } from 'react';
 import { AutoLinkHeader, Example, Link as PatternflyThemeLink } from '@patternfly/documentation-framework/components';
 import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
 import FilterIcon from '@patternfly/react-icons/dist/esm/icons/filter-icon';
@@ -216,7 +216,7 @@ pageData.examples = {
 };
 
 const Component = () => (
-  <React.Fragment>
+  <Fragment>
     <p {...{"className":"pf-v6-c-content--p pf-m-editorial ws-p "}}>
       {`Note: React Virtualized Extension lives in its own package at `}
       <PatternflyThemeLink {...{"to":"https://www.npmjs.com/package/@patternfly/react-virtualized-extension","className":""}}>
@@ -229,12 +229,12 @@ const Component = () => (
     <AutoLinkHeader {...{"id":"examples","headingLevel":"h2","className":"ws-title ws-h2"}}>
       {`Examples`}
     </AutoLinkHeader>
-    {React.createElement(pageData.examples["Basic"])}
-    {React.createElement(pageData.examples["Sortable"])}
-    {React.createElement(pageData.examples["Selectable"])}
-    {React.createElement(pageData.examples["Actions"])}
-    {React.createElement(pageData.examples["Filterable with WindowScroller"])}
-  </React.Fragment>
+    {createElement(pageData.examples["Basic"])}
+    {createElement(pageData.examples["Sortable"])}
+    {createElement(pageData.examples["Selectable"])}
+    {createElement(pageData.examples["Actions"])}
+    {createElement(pageData.examples["Filterable with WindowScroller"])}
+  </Fragment>
 );
 Component.displayName = 'ExtensionsVirtualScrollTableReactDocs';
 Component.pageData = pageData;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody, WindowScroller } from '@patternfly/react-virtualized-extension';
 import { Table, Thead, Tr, Th, Td, TableGridBreakpoint, ActionsColumn, Tbody } from '@patternfly/react-table';
@@ -25,10 +24,11 @@ import {
   Bullseye
 } from '@patternfly/react-core';
 import { FilterIcon, SearchIcon } from '@patternfly/react-icons';
+import { Fragment, useEffect, useState, CSSProperties, Ref, MouseEvent as ReactMouseEvent, SyntheticEvent, KeyboardEvent as ReactKeyboardEvent } from 'react';
 
 export const ComposableTableWindowScroller = () => {
-  const [scrollableElement, setScrollableElement] = React.useState<HTMLElement>();
-  React.useEffect(() => {
+  const [scrollableElement, setScrollableElement] = useState<HTMLElement>();
+  useEffect(() => {
     const scrollableElement = document.getElementById('content-scrollable-2') as HTMLElement;
     setScrollableElement(scrollableElement);
   }, []);
@@ -86,11 +86,11 @@ export const ComposableTableWindowScroller = () => {
   const columns = ['Servers', 'Threads', 'Applications', 'Status', 'Location'];
   const scrollToIndex = -1; // can be used to programmatically set current index
 
-  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = React.useState(false);
-  const [isFilterDropdownOpen, setIsFilterDropdownOpen] = React.useState(false);
-  const [currentCategory, setCurrentCategory] = React.useState('Name');
-  const [filters, setFilters] = React.useState<Record<string, string[]>>({ location: [], name: [], status: [] });
-  const [inputValue, setInputValue] = React.useState('');
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState('Name');
+  const [filters, setFilters] = useState<Record<string, string[]>>({ location: [], name: [], status: [] });
+  const [inputValue, setInputValue] = useState('');
 
   const onDelete = (type: string | ToolbarLabelGroup, id: string) => {
     if (type === 'Location') {
@@ -130,7 +130,7 @@ export const ComposableTableWindowScroller = () => {
     setInputValue(newValue);
   };
 
-  const onStatusSelect = (event: React.MouseEvent<Element, MouseEvent> | undefined, selection: string | number | undefined) => {
+  const onStatusSelect = (event: ReactMouseEvent<Element, MouseEvent> | undefined, selection: string | number | undefined) => {
     const checked = (event?.target as HTMLInputElement).checked;
     setFilters({
       ...filters,
@@ -139,9 +139,9 @@ export const ComposableTableWindowScroller = () => {
     setIsFilterDropdownOpen(false);
   };
 
-  const onNameInput = (event: React.SyntheticEvent<HTMLButtonElement> | React.KeyboardEvent) => {
+  const onNameInput = (event: SyntheticEvent<HTMLButtonElement> | ReactKeyboardEvent) => {
     setIsCategoryDropdownOpen(false);
-    const pressedKey = (event as React.KeyboardEvent).key;
+    const pressedKey = (event as ReactKeyboardEvent).key;
     if (pressedKey && pressedKey !== 'Enter') {
       return;
     }
@@ -155,7 +155,7 @@ export const ComposableTableWindowScroller = () => {
     setIsCategoryDropdownOpen(false);
   };
 
-  const onLocationSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, selection: string | number | undefined) => {
+  const onLocationSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, selection: string | number | undefined) => {
     setFilters({ ...filters, location: [`${selection}`] });
 
     setIsFilterDropdownOpen(false);
@@ -180,7 +180,7 @@ export const ComposableTableWindowScroller = () => {
         <Select
           onSelect={onCategorySelect}
           selected={currentCategory}
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               ref={toggleRef}
               onClick={onCategoryToggle}
@@ -190,7 +190,7 @@ export const ComposableTableWindowScroller = () => {
                 {
                   width: '100%',
                   verticalAlign: 'text-bottom'
-                } as React.CSSProperties
+                } as CSSProperties
               }
             >
               {currentCategory}
@@ -247,7 +247,7 @@ export const ComposableTableWindowScroller = () => {
     ];
 
     return (
-      <React.Fragment>
+      <Fragment>
         <ToolbarFilter
           labels={filters.location}
           deleteLabel={(category, chip) => onDelete(category, chip as string)}
@@ -260,7 +260,7 @@ export const ComposableTableWindowScroller = () => {
             selected={filters.location[0]}
             isOpen={isFilterDropdownOpen}
             popperProps={{ minWidth: '100px' }}
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={onFilterToggle}
@@ -269,7 +269,7 @@ export const ComposableTableWindowScroller = () => {
                   {
                     width: '100%',
                     verticalAlign: 'text-bottom'
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 {filters.location[0] || `Any`}
@@ -308,7 +308,7 @@ export const ComposableTableWindowScroller = () => {
             popperProps={{ minWidth: '100px' }}
             onSelect={onStatusSelect}
             selected={filters.status}
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={onFilterToggle}
@@ -317,7 +317,7 @@ export const ComposableTableWindowScroller = () => {
                   {
                     width: '100%',
                     verticalAlign: 'text-bottom'
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 Filter by status
@@ -328,7 +328,7 @@ export const ComposableTableWindowScroller = () => {
             {statusMenuItems}
           </Select>
         </ToolbarFilter>
-      </React.Fragment>
+      </Fragment>
     );
   };
 

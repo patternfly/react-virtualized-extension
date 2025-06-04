@@ -1,9 +1,9 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Caption, Table, TableGridBreakpoint, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody } from '@patternfly/react-virtualized-extension';
 
-export const VirtualizedExample: React.FunctionComponent = () => {
+export const VirtualizedExample: FunctionComponent = () => {
   // this StringArray type is just needed because something in our documentation framework crashes when it encounters
   // a string[][] type
   type StringArray = string[];

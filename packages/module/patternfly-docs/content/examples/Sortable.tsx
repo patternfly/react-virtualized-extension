@@ -1,9 +1,10 @@
-import React from 'react';
+import type { FunctionComponent } from 'react';
+import { useState } from 'react';
 import { Caption, Table, Td, Th, Thead, ThProps, Tr } from '@patternfly/react-table';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody } from '@patternfly/react-virtualized-extension';
 
-export const SortableExample: React.FunctionComponent = () => {
+export const SortableExample: FunctionComponent = () => {
   const rows: { id: string; cells: string[] }[] = [];
   for (let i = 0; i < 100; i++) {
     rows.push({
@@ -14,10 +15,10 @@ export const SortableExample: React.FunctionComponent = () => {
 
   const columns = ['Repositories', 'Branches', 'Pull requests', 'Workspaces', 'Last Commit'];
 
-  const [activeSortIndex, setActiveSortIndex] = React.useState<number>(-1);
+  const [activeSortIndex, setActiveSortIndex] = useState<number>(-1);
 
   // Sort direction of the currently sorted column
-  const [activeSortDirection, setActiveSortDirection] = React.useState<'asc' | 'desc' | undefined>();
+  const [activeSortDirection, setActiveSortDirection] = useState<'asc' | 'desc' | undefined>();
 
   const getRowIndex = (str: string) => Number(str?.split('-')[1]);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import { createElement, Fragment } from 'react';
 import { AutoLinkHeader, Example, Link as PatternflyThemeLink } from '@patternfly/documentation-framework/components';
 import { ExtendedButton } from "@patternfly/react-virtualized-extension";
 const pageData = {
@@ -45,13 +45,13 @@ pageData.examples = {
 };
 
 const Component = () => (
-  <React.Fragment>
+  <Fragment>
     <AutoLinkHeader {...{"id":"basic-usage","size":"h2","className":"ws-title ws-h2"}}>
       {`Basic usage`}
     </AutoLinkHeader>
-    {React.createElement(pageData.examples["Example"])}
-    {React.createElement(pageData.examples["Fullscreen example"])}
-  </React.Fragment>
+    {createElement(pageData.examples["Example"])}
+    {createElement(pageData.examples["Fullscreen example"])}
+  </Fragment>
 );
 Component.displayName = 'ExtensionsPatternflyExtensionSeedReactDocs';
 Component.pageData = pageData;

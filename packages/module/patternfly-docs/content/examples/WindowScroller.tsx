@@ -1,11 +1,11 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody, WindowScroller } from '@patternfly/react-virtualized-extension';
 import { Table, Thead, Tr, Th, Td, Caption, TableGridBreakpoint } from '@patternfly/react-table';
 
 export const WindowScrollerExample = () => {
-  const [scrollableElement, setScrollableElement] = React.useState<HTMLElement>();
-  React.useEffect(() => {
+  const [scrollableElement, setScrollableElement] = useState<HTMLElement>();
+  useEffect(() => {
     const scrollableElement = document.getElementById('content-scrollable-2') as HTMLElement;
     setScrollableElement(scrollableElement);
   }, []);
