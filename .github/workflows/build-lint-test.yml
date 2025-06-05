@@ -7,7 +7,7 @@ jobs:
     env:
       GH_PR_NUM: ${{ github.event.number }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
             echo "Checking out PR"
@@ -17,17 +17,17 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
           path: |
-           node_modules
-           **/node_modules
+            node_modules
+            **/node_modules
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
@@ -43,7 +43,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
             echo "Checking out PR"
@@ -53,17 +53,17 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
           path: |
-           node_modules
-           **/node_modules
+            node_modules
+            **/node_modules
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: lint-cache
         name: Load lint cache
         with:
@@ -79,7 +79,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Yes, we really want to checkout the PR
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
@@ -90,18 +90,18 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
           path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
+            node_modules
+            **/node_modules
+            ~/.cache/Cypress
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
@@ -120,7 +120,7 @@ jobs:
       GH_PR_NUM: ${{ github.event.number }}
     needs: build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Yes, we really want to checkout the PR
       - run: |
           if [[ ! -z "${GH_PR_NUM}" ]]; then 
@@ -131,18 +131,18 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
         with:
           path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
+            node_modules
+            **/node_modules
+            ~/.cache/Cypress
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
       - run: yarn install --frozen-lockfile
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: dist
         name: Cache dist
         with:
