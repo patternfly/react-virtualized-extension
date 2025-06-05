@@ -15,30 +15,36 @@ import { AutoSizer, VirtualTableBody, WindowScroller } from '@patternfly/react-v
 import { Table as TableDeprecated, TableHeader as TableHeaderDeprecated } from '@patternfly/react-table/deprecated';
 import { Table, Thead, Tr, Th, Td, Caption, TableGridBreakpoint } from '@patternfly/react-table';
 import './VirtualGrid.example.css';
+import { useState, useEffect, Fragment } from 'react';
 
 ## Examples
 
 ### Basic
 
 ```js file="./Basic.tsx"
+
 ```
 
 ### Sortable
 
 ```js file="./Sortable.tsx"
+
 ```
 
 ### Selectable
 
 ```js file="./Selectable.tsx"
+
 ```
 
 ### Actions
 
 ```js file="./Actions.tsx"
+
 ```
 
 ### Filterable with WindowScroller
 
 ```js file="./FilterableWithWindowScroller.tsx"
+
 ```

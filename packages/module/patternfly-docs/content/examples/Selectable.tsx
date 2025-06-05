@@ -1,5 +1,4 @@
-import { FunctionComponent } from 'react';
-import { useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody } from '@patternfly/react-virtualized-extension';
