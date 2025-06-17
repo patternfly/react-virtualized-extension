@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import * as React from 'react';
+import { Component } from 'react';
 import {
   NoContentRenderer,
   Alignment,
@@ -121,7 +121,7 @@ interface VirtualTableBodyProps
   rows: any[];
 }
 
-export class VirtualTableBody extends React.Component<VirtualTableBodyProps> {
+export class VirtualTableBody extends Component<VirtualTableBodyProps> {
   static defaultProps = {
     autoHeight: false,
     estimatedRowSize: 30,
@@ -232,7 +232,7 @@ export class VirtualTableBody extends React.Component<VirtualTableBodyProps> {
       // note: these aria props if rendered will break a11y for role="presentation"
       // this approach attempts to fix non standard table grids
       // see: https://www.html5accessibility.com/tests/aria-table-fix.html
-      <VirtualGrid
+      (<VirtualGrid
         {...this.props}
         style={{
           tableLayout: 'fixed',
@@ -257,7 +257,7 @@ export class VirtualTableBody extends React.Component<VirtualTableBodyProps> {
         scrollToRow={scrollToIndex}
         scrollContainerComponent={scrollContainerComponent}
         innerScrollContainerComponent={innerScrollContainerComponent}
-      />
+      />)
     );
   }
 

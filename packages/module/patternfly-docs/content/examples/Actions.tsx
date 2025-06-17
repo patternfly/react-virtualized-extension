@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import { FunctionComponent } from 'react';
 import {
   ActionsColumn,
   Caption,
@@ -14,7 +14,7 @@ import {
 import { CellMeasurerCache, CellMeasurer } from 'react-virtualized';
 import { AutoSizer, VirtualTableBody } from '@patternfly/react-virtualized-extension';
 
-export const ActionsExample: React.FunctionComponent = () => {
+export const ActionsExample: FunctionComponent = () => {
   interface RowType {
     disableActions: boolean;
     id: string;

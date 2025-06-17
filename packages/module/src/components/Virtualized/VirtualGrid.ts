@@ -1,5 +1,7 @@
 /* eslint-disable */
-import * as React from 'react';
+import type { ComponentType, ReactElement } from 'react';
+
+import { createElement, Component } from 'react';
 import calculateSizeAndPositionDataAndUpdateScrollOffset from './utils/calculateSizeAndPositionDataAndUpdateScrollOffset';
 import ScalingCellSizeAndPositionManager from './utils/ScalingCellSizeAndPositionManager';
 import createCallbackMemoizer from './utils/createCallbackMemoizer';
@@ -233,10 +235,10 @@ export interface VirtualGridProps {
   width: number;
 
   /** Scroll Container element to render */
-  scrollContainerComponent?: string | React.ComponentType<any>;
+  scrollContainerComponent?: string | ComponentType<any>;
 
   /** Inner Scroll Container element to render */
-  innerScrollContainerComponent?: string | React.ComponentType<any>;
+  innerScrollContainerComponent?: string | ComponentType<any>;
 }
 
 interface InstanceProps {
@@ -271,7 +273,7 @@ interface VirtualGridState {
  * Renders tabular data with virtualization along the vertical and horizontal axes.
  * Row heights and column widths must be known ahead of time and specified as properties.
  */
-export class VirtualGrid extends React.Component<VirtualGridProps, VirtualGridState> {
+export class VirtualGrid extends Component<VirtualGridProps, VirtualGridState> {
   static defaultProps = {
     'aria-label': 'grid',
     'aria-readonly': true,
@@ -317,7 +319,7 @@ export class VirtualGrid extends React.Component<VirtualGridProps, VirtualGridSt
   _scrollbarPresenceChanged = false;
   _scrollingContainer: Element;
 
-  _childrenToDisplay: React.ReactElement<any>[];
+  _childrenToDisplay: ReactElement<any>[];
 
   _columnStartIndex: number;
   _columnStopIndex: number;
@@ -1020,13 +1022,13 @@ export class VirtualGrid extends React.Component<VirtualGridProps, VirtualGridSt
           ...containerStyle
         }
       };
-      innerScrollContainer = React.createElement(
+      innerScrollContainer = createElement(
         innerScrollContainerComponent,
         innerScrollContainerProps,
         childrenToDisplay
       );
     }
-    return React.createElement(scrollContainerComponent, scrollContainerProps, [
+    return createElement(scrollContainerComponent, scrollContainerProps, [
       innerScrollContainer,
       showNoContentRenderer && noContentRenderer()
     ]);

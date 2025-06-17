@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type { ReactElement } from 'react';
 import ScalingCellSizeAndPositionManager from './utils/ScalingCellSizeAndPositionManager';
 
 export interface CellPosition {
@@ -16,10 +16,10 @@ export interface CellRendererParams {
   style: any;
 }
 
-export type CellRenderer = (props: CellRendererParams) => React.ReactElement<any>;
+export type CellRenderer = (props: CellRendererParams) => ReactElement<any>;
 
 export interface CellCache {
-  [key: string]: React.ReactElement<any>;
+  [key: string]: ReactElement<any>;
 }
 export interface StyleCache {
   [key: string]: any;
@@ -47,13 +47,13 @@ export interface CellRangeRendererParams {
   visibleRowIndices: any;
 }
 
-export type CellRangeRenderer = (params: CellRangeRendererParams) => React.ReactElement<any>[];
+export type CellRangeRenderer = (params: CellRangeRendererParams) => ReactElement<any>[];
 
 export type CellSizeGetter = (params: { index: number }) => number;
 
 export type CellSize = CellSizeGetter | number;
 
-export type NoContentRenderer = () => React.ReactElement<any> | null;
+export type NoContentRenderer = () => ReactElement<any> | null;
 
 export interface Scroll {
   clientHeight: number;
