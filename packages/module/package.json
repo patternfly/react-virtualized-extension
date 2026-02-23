@@ -39,9 +39,9 @@
     "tag": "prerelease"
   },
   "dependencies": {
-    "@patternfly/react-core": "^6.0.0-prerelease.21",
-    "@patternfly/react-icons": "^6.0.0-prerelease.7",
-    "@patternfly/react-styles": "^6.0.0-prerelease.6",
+    "@patternfly/react-core": "^6.0.0",
+    "@patternfly/react-icons": "^6.0.0",
+    "@patternfly/react-styles": "^6.0.0",
     "linear-layout-vector": "0.0.1",
     "react-virtualized": "^9.22.5",
     "tslib": "^2.5.2"
@@ -51,10 +51,10 @@
     "react-dom": "^17 || ^18 || ^19"
   },
   "devDependencies": {
-    "@patternfly/documentation-framework": "^6.0.0-alpha.109",
-    "@patternfly/patternfly": "^6.0.0-prerelease.15",
-    "@patternfly/react-table": "^6.0.0-prerelease.22",
-    "@patternfly/react-code-editor": "^6.0.0-prerelease.21",
+    "@patternfly/documentation-framework": "6.0.0-alpha.120",
+    "@patternfly/patternfly": "^6.0.0",
+    "@patternfly/react-table": "^6.0.0",
+    "@patternfly/react-code-editor": "^6.0.0",
     "rimraf": "^5.0.1",
     "@patternfly/patternfly-a11y": "^4.3.1",
     "react-monaco-editor": "^0.51.0",
