@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
+      - run: corepack enable
       - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
@@ -24,8 +25,9 @@ jobs:
           path: |
             node_modules
             **/node_modules
+            .yarn/cache
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - uses: actions/cache@v4
         id: dist
@@ -53,6 +55,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
+      - run: corepack enable
       - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
@@ -60,8 +63,9 @@ jobs:
           path: |
             node_modules
             **/node_modules
+            .yarn/cache
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - uses: actions/cache@v4
         id: lint-cache
@@ -90,6 +94,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
+      - run: corepack enable
       - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
@@ -99,7 +104,7 @@ jobs:
             **/node_modules
             ~/.cache/Cypress
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - uses: actions/cache@v4
         id: dist
@@ -131,6 +136,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '20'
+      - run: corepack enable
       - uses: actions/cache@v4
         id: yarn-cache
         name: Cache npm deps
@@ -140,7 +146,7 @@ jobs:
             **/node_modules
             ~/.cache/Cypress
           key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - uses: actions/cache@v4
         id: dist
