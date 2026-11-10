@@ -3876,10 +3876,6 @@ __metadata:
     serve: "npm:^14.2.0"
     typescript: "npm:^5.0.4"
   dependenciesMeta:
-    chromedriver:
-      built: true
-    puppeteer:
-      built: true
     sharp:
       built: true
   languageName: unknown
